@@ -1,0 +1,304 @@
+<!doctype html>
+<html class="no-js" lang="">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>JC x SB</title>
+		<link rel="shortcut icon" href="//cdn.shopify.com/s/files/1/0263/1575/t/3/assets/favicon.png?3341" type="image/png" />
+		<link href='http://fonts.googleapis.com/css?family=Raleway:700,200' rel='stylesheet' type='text/css'>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<style type="text/css">
+			/* apply a natural box layout model to all elements, but allowing components to change */
+			html {box-sizing: border-box;}
+			a {color:rgba(255,255,255,1);text-decoration:none;-webkit-transition: 0.3s  ease-in-out;transition: 0.3s  ease-in-out;}
+			/*a:hover {color:rgba(255,255,255,0.8);}*/
+			*, *:before, *:after {box-sizing: inherit;}
+			body, html, img {border:0;margin:0;}
+			body {height:100%;font-family:Raleway;font-weight:200;background:#000 url(1.jpg) center center fixed;background-size:cover;padding:25vh 0 60px 0;}
+			h1 {font-family:Raleway;font-weight:200;font-size:15px;line-height:24px;color:rgba(255,255,255,1);}
+			p {font-size:15px;line-height:24px;margin:40px 0 0 0;text-align:center;}
+			b {font-weight:700;}
+			#ytwrapper {width:100%;height:100%;position:fixed;top:0;left:0;overflow:hidden;z-index:1;}
+			#ytplayer1, #ytplayer2 {width:160%;height:160%;position:absolute;top:-30%;left:-30%;z-index:10;}
+			#ytplayer1 {left:-400%;}
+			#ytplayer2 {left:-200%;}
+			#ytclickblock {width:98%;height:100%;position:absolute;top:0;left:1%;z-index:20;} /* 98% width...if it's 100% safari no bueno */
+			.promo {position:relative;width:40%;margin:0 auto 0 auto;z-index:100;text-align:center;color:#fff;}
+			.maintitle {width:100%;height:auto;border:0;}
+			.player {position:relative;width:100%;z-index:90;text-align:center;color:#fff;}
+			.playbutton {top:0;display:block;width:40px;height:40px;margin:40px auto 40px auto;}
+			.cashmusic.soundplayer {position:relative;top:0;z-index:5000;display:none;}
+			.cashmusic.soundplayer.playing {top:-1000px;}
+			.progress {display:none;position:absolute;top:32px;margin-top:-3px;background-color:rgba(238,0,0,0.6);width:1%;height:6px;-webkit-filter: blur(1px);-moz-filter: blur(1px);-o-filter: blur(1px);-ms-filter: blur(1px);filter: blur(1px);}
+			#sacredbones {display:inline-block;width:72px;height:auto;}
+			#details {position:relative;width:100%;height:150px;text-align:justify;}
+			.swap {position:absolute;top:0;left:0;width:100%;height:auto;padding:5px;}
+			.signup {opacity:0;visibility:hidden;}
+
+			@media (min-width:900px) and (min-height:500px) {
+				#basicdata {position:fixed;top:28px;left:50%;margin-left:-20%;width:40%;}
+				#basicdata p {margin:0;font-size:14px;line-height:23px;}
+				#details {height:50px;}
+				body {padding:36vh 0 60px 0;}
+				/* UNCOMMENT ALL BELOW FOR CALEB 
+				#basicdata {left:35px;margin-left:0;}
+				#homelink {position:fixed;top:20px;right:40px;}
+				/**/
+			}
+
+			@media (min-width:1100px) and (min-height:500px) {}
+
+			@media only screen and (max-device-width : 1024px) {
+				body {padding:12vh 0 60px 0;}
+				.promo {width:92%;}
+				#ytwrapper {display:none;}
+				#details {height:160px;/* MOBILE FULL DESCRIPTION height:220px;*/}
+				.cashmusic.soundplayer {display:inline;}
+				#basicdata {margin-top:40px;}
+			}
+		</style>
+		<script type="text/javascript" src="https://cashmusic.org/public/cashmusic.js"></script>
+	</head>
+	<body>
+		<a style="display:none;" href="https://s3.amazonaws.com/cashmusicguests/cashmusic-23591412566371/1412567166/JohnCarpenter-Vortex.mp3" class="cashmusic soundplayer inline"></a>
+
+		<div id="ytwrapper">	
+			<div id="ytplayer1"></div>
+			<div id="ytplayer2"></div>
+			<div id="ytclickblock"></div>
+		</div>
+
+		<div class="promo">
+			<img src="carpenter_title.png" class="maintitle" alt="" />
+			
+			<div id="details">
+				<div id="basicdata" class="swap">
+					<!--p>
+						The debut solo album from the legendary director and composer behind <i>Halloween</i>, <i>Escape From New York</i>, <i>They Live</i>, <i>Assault on Precinct 13</i>  and many more. Available on Sacred Bones Records <b>February 2015</b>.  You're listening to "Vortex," by John Carpenter.
+					</p-->
+					<p>
+						"Vortex," by John Carpenter
+					</p>
+				</div>
+
+				<a href="#" class="cashmusic soundplayer playpause" data-soundid="https://s3.amazonaws.com/cashmusicguests/cashmusic-23591412566371/1412567166/JohnCarpenter-Vortex.mp3"><img class="playbutton" src="http://cashmusic.s3.amazonaws.com/users/rtj/images/play.png" alt="play Vortex" /></a>
+
+				<!--div id="emailcollection" class="swap signup">
+					<script type="text/javascript"> window.cashmusic.embed('https://cashmusic.org/public','5183');</script>
+				</div-->
+			</div>
+
+			<div id="logo">
+				<h1 id="homelink"><a href="http://www.sacredbonesrecords.com/?nosplash=1" target="_top">Continue to Sacred Bones Records</a></h1>
+				<a href="http://www.sacredbonesrecords.com/?nosplash=1" target="_top"><img src="sacredbones.png" id="sacredbones" alt="Sacred Bones Records"></a>
+			</div>
+		</div>
+
+	<script>
+		// fucking safari, for real
+		if (/Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor)) {
+			document.getElementById("ytplayer1").style.left = '-30%';
+		}
+
+		var tag = document.createElement('script');
+		tag.src = "https://www.youtube.com/iframe_api";
+		var firstScriptTag = document.getElementsByTagName('script')[0];
+		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+		var switchTimer = false;
+		var current = false;
+		var ytready = 0;
+		var player1DOM = false;
+		var player2DOM = false;
+		var ytids = [
+			'Zn8oYy1uZI8',
+			'5Jq6qXa-DGo',
+			'nVZl84Yg-88',
+			'jsGJw3hbHcA',
+			'gZpT4r01tMk',
+			'Q6MLOcStjM0',
+			'g4MtebddK_o',
+			'MkU8IcZzWZE',
+			't4xrEZGWJqE',
+			'DvT1fsCxxJU',
+			'CH0GS3fyE6I',
+			'ZxMDOcPdknk',
+			'ami_elAiCcc',
+			'36NEI9azq3Y',
+			'0XDfVP5iQFU',
+			'miyAnFzRDns',
+			'nMTGewftyuY',
+			'nnWH1ZVrQUs',
+			'AIG6MSsIvgM',
+			'EHMrY_KQCRw',
+			'-3klj4BnLkU',
+			'x5gLhjKg-K0',
+			'B69XCMlgTp0',
+			'2TQRiOmTRD4',
+			'b-qMZU4Ij6o',
+			'SwD1Ae87xx4',
+			'EetWpigGglQ',
+			'4U3dEY2B2H8',
+			'H4LDMBc8g1M',
+			'e3K_miNdVHY',
+			'voDUtZLOUgk',
+			'-stjfAkebBA',
+			'yjPia2JmnkA',
+			'lJOAfnbuAag',
+			'_NXPT2DKtFc',
+			'6beA-YboAM8',
+			'LUPU9WChHqQ',
+			'o87gRMN20QE',
+			'8-0AI0wLImU',
+			'oouD2FHLvP8',
+			'hYea-c0lDoo',
+			'SZ_byNhpkh0',
+			'i_s-uG-jG_M',
+			'kpmx548yly8',
+			'RqoNzRCwYEA',
+			'6SZtvpoA2kg',
+			'KcvF_GqANkE',
+			'67JXhf7EZcg',
+			'rCTeDsorzcs',
+			'FixfYBGQBqY',
+			'QzPopuxsh5k',
+			'i2E9bjJ6dC4',
+			'pF9qvTLPqn4',
+			'ibguHW26lQE',
+			'Mxk5zEF6DfM',
+			'LtFNOj1Yi6E',
+			'LUWVngo3Q6I',
+			'8DnfOXFqANc',
+			'RT3VIkKwizc',
+			'chL4Pi1ceOw',
+			'CzunwV4nEYM',
+			'u67fF7Z7yjk',
+			'EPdNxZiqFps',
+			'GPNMnXtXn2g',
+			'SnW47aHndAM',
+			'uKmVKZBPIA4'
+		];
+
+		var player;
+		function onYouTubeIframeAPIReady() {
+			var ytEvents = {
+				'onReady': onPlayerReady
+			};
+			var ytVars = {
+				'autoplay': 1,
+				'controls': 0,
+				'disablekb': 1,
+				'enablejsapi': 1,
+				'loop': 1,
+				'modestbranding': 1,
+				'origin': window.location.protocol + '//' + window.location.host,
+				'playlist': '',
+				'playsinline': 1,
+				'rel': 0,
+				'showinfo': 0,
+				'iv_load_policy': 3,
+				'wmode': 'opaque',
+				'suggestedQuality':'hd1080'
+			};
+			var ytId1 = ytids[Math.floor(Math.random() * ytids.length)];
+			var ytId2 = ytids[Math.floor(Math.random() * ytids.length)];
+			var ytVars1 = ytVars;
+			var ytVars2 = ytVars;
+			ytVars1.playlist = ytId1;
+			ytVars2.playlist = ytId2;
+			player1 = new YT.Player('ytplayer1', {
+				videoId: ytId1,
+				events: ytEvents,
+				playerVars: ytVars1
+			});
+			player2 = new YT.Player('ytplayer2', {
+				videoId: ytId2,
+				events: ytEvents,
+				playerVars: ytVars2
+			});
+		}
+
+		function onPlayerReady(event) {
+			if (/Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor)) {
+				document.getElementById("ytplayer1").style.left = '-400%';
+			}
+
+			ytready = ytready + 1;
+			event.target.mute();
+			//event.target.pauseVideo();
+			if (ytready > 1) {
+				player1DOM = document.getElementById("ytplayer1");
+				player2DOM = document.getElementById("ytplayer2");
+
+				player1DOM.addEventListener("click", function( event ) {
+					event.preventDefault();
+					event.stopPropagation();
+				}, false);
+
+				player2DOM.addEventListener("click", function( event ) {
+					event.preventDefault();
+					event.stopPropagation();
+				}, false);
+
+				current = player1;
+
+				// give it a little load time
+				setTimeout(function(){player1DOM.style.left = '-30%'},4000);
+
+				switchVideos();
+			}
+		}
+
+		function switchVideos() {
+			var hidden = player2;
+			var hiddenDOM = player2DOM;
+			var currentDOM = player1DOM;
+			if (current == player2) {
+				hidden = player1;
+				hiddenDOM = player1DOM;
+				currentDOM = player2DOM;
+			}
+			hidden.playVideo();
+			window.setTimeout(finishSwitch, 3500);
+		}
+
+		function finishSwitch() {
+			var hidden = player2;
+			var hiddenDOM = player2DOM;
+			var currentDOM = player1DOM;
+			if (current == player2) {
+				hidden = player1;
+				hiddenDOM = player1DOM;
+				currentDOM = player2DOM;
+			}
+			hiddenDOM.style.left = '-30%';
+			currentDOM.style.left = '-200%';
+			var loadVideo = ytids[Math.floor(Math.random() * ytids.length)];
+			current.loadVideoById(loadVideo);
+			var timeout = Math.floor(Math.random() * 11000)
+			switchTimer = window.setTimeout(switchVideos, 8000 + timeout);
+			current.pauseVideo();
+			current = hidden;
+		}
+
+
+
+		function startItUp() {
+			if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) == false) {
+				window.cashmusic.soundplayer.toggle('https://s3.amazonaws.com/cashmusicguests/cashmusic-23591412566371/1412567166/JohnCarpenter-Vortex.mp3');
+				window.cashmusic.events.add(window.cashmusic,'soundplayerFinish',function(e) {
+					setTimeout(startItUp, 500);
+				});
+			}
+		}
+
+		function showEmailCollection() {
+
+		}
+
+		// Commenting out the auto-play to save bandwidth and more:
+		////////////////////////////////////////////////////////////// setTimeout(startItUp, 1500);
+	</script>
+</body>
+</html>
