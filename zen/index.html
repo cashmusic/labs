@@ -1,52 +1,104 @@
 <!DOCTYPE html>
 <head> 
-	<title>CASH Music - Mozfest 2014</title>
+	<title>CASH Music - Zen CSS</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link rel="icon" type="image/x-icon" href="https://91ee07a61ca29df61569-b2dba7dce06e8a9c0977ad3a8844e9c8.ssl.cf2.rackcdn.com/v3/ui/default/assets/images/favicon.ico" />
 	<link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" type="text/css" href="https://91ee07a61ca29df61569-b2dba7dce06e8a9c0977ad3a8844e9c8.ssl.cf2.rackcdn.com/v3/assets/css/embed-default.css" />
-	<link rel="stylesheet" type="text/css" href="https://91ee07a61ca29df61569-b2dba7dce06e8a9c0977ad3a8844e9c8.ssl.cf2.rackcdn.com/v3/assets/css/page-default.css" />
+	<link rel="stylesheet" type="text/css" href="https://b6febe3773eb5c5bc449-6d885a724441c07ff9b675222419a9d2.ssl.cf2.rackcdn.com/standard/css/stdrd.css" />
 	<script type="text/javascript" src="https://cashmusic.org/public/cashmusic.js"></script>
+	<style type="text/css">
+		#mainspc {width:80%;margin:20px auto;text-align:left;}
+		#examples {margin-top:80px;}
+		h1 {text-align:center;font-size:60px;}
+		p.intro {margin:40px 0 40px 0;text-align:center;font-size:32px;line-height:48px;width:100%;}
+	</style>
 </head> 
 <body>
+	<div id="topspc"></div>
 	<div id="mainspc">
-		<!-- Email Collection Example -->
-		<script type="text/javascript"> 
-			// using the longer object style embed code with CSS override enabled
-			window.cashmusic.embed(
-				{
-					endpoint: 'https://cashmusic.org/public',
-					elementid: '5341',
-					cssoverride: 'https://91ee07a61ca29df61569-b2dba7dce06e8a9c0977ad3a8844e9c8.ssl.cf2.rackcdn.com/v3/assets/css/embed-default.css'
-				}
-			);
-		</script>
-
-		<!-- Single Purchase Example -->
-		<script type="text/javascript"> 
-			// using the longer object style embed code with CSS override enabled
-			window.cashmusic.embed(
-				{
-					endpoint: 'https://cashmusic.org/public',
-					elementid: '5340',
-					cssoverride: 'https://91ee07a61ca29df61569-b2dba7dce06e8a9c0977ad3a8844e9c8.ssl.cf2.rackcdn.com/v3/assets/css/embed-default.css'
-				}
-			);
-		</script>
-
-		<!-- Tour Dates Example -->
-		<script type="text/javascript"> 
-			// using the longer object style embed code with CSS override enabled
-			window.cashmusic.embed(
-				{
-					endpoint: 'https://cashmusic.org/public',
-					elementid: '5342',
-					cssoverride: 'https://91ee07a61ca29df61569-b2dba7dce06e8a9c0977ad3a8844e9c8.ssl.cf2.rackcdn.com/v3/assets/css/embed-default.css'
-				}
-			);
-		</script>
-
+		<h1>Zen</h1>
+		<p class="intro">
+			This is a playground where you can test new CSS against live CASH Music elements. What can you do with it?
+			<br /><br />
+			<a id="changeup" href="#" class="btn">Change embed style</a>
+		</p>
+		<div id="examples">
+			<h3>Join our email list</h3>
+			<div id="example-emailcollection"></div>
+			<h3>Support CASH Music</h3>
+			<div id="example-singlepurchase"></div>
+			<h3>Upcoming dates</h3>
+			<div id="example-tourdates"></div>
+		</div>
 	</div>
-	<div class="madebycash"><a href="http://cashmusic.org/" target="_blank">Made with &#9825; by CASH Music. Open-source &amp; Free forever. </a></div><!--madebycash-->
+	
+	<script type="text/javascript">
+		(function() {
+			
+			if (window.cashmusic) {
+				var reset = document.getElementById('examples').innerHTML;
+				var cm = window.cashmusic;
+				/*
+				object style embed is failing on targetNode
+				cm.embed(
+					{
+						endpoint: 'https://cashmusic.org/public',
+						elementid: '5469',
+						cssoverride: '',
+						targetNode: '#example-emailcollection'
+					}
+				);
+				*/
+
+				function redrawElements(pageCSS,elementCSS1,elementCSS2,elementCSS3) {
+					document.getElementById('examples').innerHTML = reset;
+					if (pageCSS) {
+						cm.styles.injectCSS(
+							'pageCSS'
+						);
+					}
+					cm.embed(
+						'https://cashmusic.org/public',
+						'5469', 
+						false, 
+						false, 
+						false, 
+						'#example-emailcollection',
+						elementCSS1
+					);
+					cm.embed(
+						'https://cashmusic.org/public',
+						'5471', 
+						false, 
+						false, 
+						false, 
+						'#example-singlepurchase',
+						elementCSS2
+					);
+					cm.embed(
+						'https://cashmusic.org/public',
+						'5472', 
+						false, 
+						false, 
+						false, 
+						'#example-tourdates',
+						elementCSS3
+					);
+				}
+
+				redrawElements(false,false,false,false);
+
+				cm.events.add(document.getElementById('changeup'),'click',function(e) {
+					e.preventDefault();
+					redrawElements(
+						false,
+						'https://91ee07a61ca29df61569-b2dba7dce06e8a9c0977ad3a8844e9c8.ssl.cf2.rackcdn.com/v5/assets/css/embed-light.css',
+						'https://91ee07a61ca29df61569-b2dba7dce06e8a9c0977ad3a8844e9c8.ssl.cf2.rackcdn.com/v5/assets/css/embed-light.css',
+						'https://91ee07a61ca29df61569-b2dba7dce06e8a9c0977ad3a8844e9c8.ssl.cf2.rackcdn.com/v5/assets/css/embed-light.css'
+					);
+				});
+			}
+		})();
+	</script>
 </body> 
 </html>
