@@ -11,6 +11,52 @@
 		#examples {margin-top:80px;}
 		h1 {text-align:center;font-size:60px;}
 		p.intro {margin:40px 0 40px 0;text-align:center;font-size:32px;line-height:48px;width:100%;}
+
+		textarea{
+			box-sizing: border-box;
+			width:100%;
+			padding:20px 2%;
+			margin:0;
+			border:none;
+			font-weight: 100;
+			display:inline-block;
+			background:#fff;
+			background:rgba(255,255,255,0.9);
+			color:#222;
+			font: 400 18px/20px 'Montserrat',Helvetica,Arial,sans-serif;
+			-webkit-transition: background 0.3s  ease-in-out;
+			-moz-transition: background 0.3s  ease-in-out;
+			trasition: background 0.3s ease-in-out;
+			-webkit-border-radius: 3px;
+			-moz-border-radius: 3px;
+			border-radius: 3px;
+			outline:none;
+		}
+
+		input[type=submit], .button{
+			padding:21px 5%;
+			width:auto;
+			text-align: center;
+			margin:4px auto 0 auto;
+			background:#00cf7f;
+			color:#222;
+			display:inline-block;
+			border:none;
+			-webkit-border-radius: 3px;
+			-moz-border-radius: 3px;
+			border-radius: 3px;
+			text-transform: capitalize;
+			-webkit-appearance:none;
+			font-size: 18px;
+			line-height:20px;
+		}
+
+		input[type=submit]:hover, .button:hover{
+			background:#000;
+			color:#fff;
+			cursor: pointer;
+			outline: none;
+		}
 	</style>
 </head> 
 <body>
@@ -30,6 +76,15 @@
 			<h3>Upcoming dates</h3>
 			<div id="example-tourdates"></div>
 		</div>
+
+		<form id="editform">
+			<textarea id="element1edit"></textarea>
+			<textarea id="element2edit"></textarea>
+			<textarea id="element3edit"></textarea>
+			<div>
+				<input type="submit" value="edit css" />
+			</div>
+		</form>
 	</div>
 	
 	<script type="text/javascript">
@@ -37,6 +92,7 @@
 			
 			if (window.cashmusic) {
 				var reset = document.getElementById('examples').innerHTML;
+				var current = 0;
 				var cm = window.cashmusic;
 				/*
 				object style embed is failing on targetNode
@@ -53,9 +109,7 @@
 				function redrawElements(pageCSS,elementCSS1,elementCSS2,elementCSS3) {
 					document.getElementById('examples').innerHTML = reset;
 					if (pageCSS) {
-						cm.styles.injectCSS(
-							'pageCSS'
-						);
+						cm.styles.injectCSS('pageCSS',true);
 					}
 					cm.embed(
 						'https://cashmusic.org/public',
@@ -90,11 +144,23 @@
 
 				cm.events.add(document.getElementById('changeup'),'click',function(e) {
 					e.preventDefault();
-					redrawElements(
-						false,
-						'https://91ee07a61ca29df61569-b2dba7dce06e8a9c0977ad3a8844e9c8.ssl.cf2.rackcdn.com/v5/assets/css/embed-light.css',
-						'https://91ee07a61ca29df61569-b2dba7dce06e8a9c0977ad3a8844e9c8.ssl.cf2.rackcdn.com/v5/assets/css/embed-light.css',
-						'https://91ee07a61ca29df61569-b2dba7dce06e8a9c0977ad3a8844e9c8.ssl.cf2.rackcdn.com/v5/assets/css/embed-light.css'
+					var standards = ['','light','dark'];
+					if (current == 2) {
+						current = 0;
+						redrawElements(false,false,false,false);
+					} else {
+						current = current + 1;
+						var url = 'https://91ee07a61ca29df61569-b2dba7dce06e8a9c0977ad3a8844e9c8.ssl.cf2.rackcdn.com/v5/assets/css/embed-' + standards[current] + '.css';
+					}
+					redrawElements(false,url,url,url);
+				});
+
+				cm.events.add(document.getElementById('editform'),'submit',function(e) {
+					e.preventDefault();
+					redrawElements(false,
+						document.getElementById('element1edit').value,
+						document.getElementById('element2edit').value,
+						document.getElementById('element3edit').value
 					);
 				});
 			}
