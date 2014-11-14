@@ -57,6 +57,32 @@
 			cursor: pointer;
 			outline: none;
 		}
+
+		#editspc {
+			box-sizing: border-box;
+			-webkit-transition: left 0.3s  ease-in-out;
+			-moz-transition: left 0.3s  ease-in-out;
+			trasition: left 0.3s ease-in-out;
+			position:fixed;
+			top:0;
+			left:-500px;
+			width:500px;
+			height:100%;
+			padding:40px;
+			background-color:rgba(0,0,0,0.8);
+			overflow:auto;
+			color:#fff;
+			text-align:left;
+			z-index:5432;
+		}
+
+		#editspc p {
+			margin-left:0;
+		}
+
+		.btn {
+			font-size:24px;
+		}
 	</style>
 </head> 
 <body>
@@ -66,7 +92,7 @@
 		<p class="intro">
 			This is a playground where you can test new CSS against live CASH Music elements. What can you do with it?
 			<br /><br />
-			<a id="changeup" href="#" class="btn">Change embed style</a>
+			<a id="changeup" href="#" class="btn">Change embed style</a> <a id="opencustomize" href="#" class="btn">Customize CSS</a>
 		</p>
 		<div id="examples">
 			<h3>Join our email list</h3>
@@ -76,13 +102,23 @@
 			<h3>Upcoming dates</h3>
 			<div id="example-tourdates"></div>
 		</div>
+	</div>
 
+	<div id="editspc">
+		<h2>Customize</h2>
+		<p>Add any CSS (inline or URL) to customize the element embeds.</p>
 		<form id="editform">
+			<label>Email collection element
 			<textarea id="element1edit"></textarea>
+			</label>
+			<label>Purchase element
 			<textarea id="element2edit"></textarea>
+			</label>
+			<label>Tour dates element
 			<textarea id="element3edit"></textarea>
+			</label>
 			<div>
-				<input type="submit" value="edit css" />
+				<input type="submit" value="edit CSS" />
 			</div>
 		</form>
 	</div>
@@ -93,6 +129,7 @@
 			if (window.cashmusic) {
 				var reset = document.getElementById('examples').innerHTML;
 				var current = 0;
+				var customizeopen = false;
 				var cm = window.cashmusic;
 				/*
 				object style embed is failing on targetNode
@@ -144,7 +181,7 @@
 
 				cm.events.add(document.getElementById('changeup'),'click',function(e) {
 					e.preventDefault();
-					var standards = ['','light','dark'];
+					var standards = ['','dark','light'];
 					if (current == 2) {
 						current = 0;
 						redrawElements(false,false,false,false);
@@ -153,6 +190,17 @@
 						var url = 'https://91ee07a61ca29df61569-b2dba7dce06e8a9c0977ad3a8844e9c8.ssl.cf2.rackcdn.com/v5/assets/css/embed-' + standards[current] + '.css';
 					}
 					redrawElements(false,url,url,url);
+				});
+
+				cm.events.add(document.getElementById('opencustomize'),'click',function(e) {
+					e.preventDefault();
+					if (customizeopen) {
+						document.getElementById('editspc').style.left = '-500px';
+						customizeopen = false;
+					} else {
+						document.getElementById('editspc').style.left = '0px';
+						customizeopen = true;
+					}
 				});
 
 				cm.events.add(document.getElementById('editform'),'submit',function(e) {
