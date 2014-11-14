@@ -42,6 +42,7 @@
 			color:#222;
 			display:inline-block;
 			border:none;
+			text-decoration: none;
 			-webkit-border-radius: 3px;
 			-moz-border-radius: 3px;
 			border-radius: 3px;
@@ -118,7 +119,7 @@
 			<textarea id="element3edit"></textarea>
 			</label>
 			<div>
-				<input type="submit" value="edit CSS" />
+				<input type="submit" value="edit CSS" /> <a class="button" id="emailbutton" href="#">Show us</a>
 			</div>
 		</form>
 	</div>
@@ -201,6 +202,16 @@
 						document.getElementById('editspc').style.left = '0px';
 						customizeopen = true;
 					}
+				});
+
+				cm.events.add(document.getElementById('emailbutton'),'click',function(e) {
+					e.preventDefault();
+					var body = "Author: %0A";
+					body += "Title: %0A%0A";
+					body += "EMAIL COLLECTION CSS%0A" + document.getElementById('element1edit').value + "%0A%0A";
+					body += "SINGLE PURCHASE CSS%0A" + document.getElementById('element2edit').value + "%0A%0A";
+					body += "TOUR DATES CSS%0A" + document.getElementById('element3edit').value + "%0A%0A";
+					window.location="mailto:dev@cashmusic.org?subject=CSS%20Zen%20submission&body="+body;
 				});
 
 				cm.events.add(document.getElementById('editform'),'submit',function(e) {
