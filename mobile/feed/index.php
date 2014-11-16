@@ -98,8 +98,8 @@ if (isset($_GET['live'])) {
 	$pitchfork_rss = simplexml_load_string(getURLContents('http://pitchfork.com/rss/reviews/tracks/'));
 	$pitchfork_json = json_encode($pitchfork_rss);
 } else {
-	$hypem_json = file_get_contents(__DIR__ . '/sampledata/hypem.json');
-	$pitchfork_json = file_get_contents(__DIR__ . '/sampledata/pitchfork.json');
+	$hypem_json = file_get_contents(__DIR__ . '/../sampledata/hypem.json');
+	$pitchfork_json = file_get_contents(__DIR__ . '/../sampledata/pitchfork.json');
 }
 
 // decode the JSON to associative arrays
@@ -125,6 +125,8 @@ foreach ($hypem_feed as $item) {
 			'pitchforkscore' => 0,
 			'artist' => $item['artist'],
 			'title' => $item['title'],
+			'cover' => $item['thumb_url_large'],
+			'featured' => true,
 			'hypemdata' => $item,
 			'pitchforkdata' => ''
 		);
@@ -146,6 +148,8 @@ foreach ($pitchfork_feed['channel']['item'] as $item) {
 			'pitchforkscore' => strtotime($item['pubDate']),
 			'artist' => $splat[0],
 			'title' => str_replace('"','',$splat[1]),
+			'cover' => false,
+			'featured' => false,
 			'hypemdata' => '',
 			'pitchforkdata' => $item
 		);
@@ -168,11 +172,12 @@ array_multisort($score, SORT_DESC, $full_feed);
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
 <link rel="icon" type="image/x-icon" href="https://91ee07a61ca29df61569-b2dba7dce06e8a9c0977ad3a8844e9c8.ssl.cf2.rackcdn.com/v3/ui/default/assets/images/favicon.ico" />
 <link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-<link href='css/mobile.css' rel='stylesheet' type='text/css'>
+<link href='../css/mobile.css' rel='stylesheet' type='text/css'>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </head> 
 <body>
 <header>
-<img src="images/bg.jpg" alt="Background" />
+<img src="../images/bg.jpg" alt="Background" />
 <h1>Open <span>Mobile Music</span> Discovery</h1>
 </header><!--bg-->
 	<div id="mainspc">
@@ -185,7 +190,11 @@ array_multisort($score, SORT_DESC, $full_feed);
 			//	  2. load more info on span click, display data from the fullFeed JS object below
 			//    3. party
 			foreach ($full_feed as $item) {
-				echo("<div class='item'><img class='packshot' src='images/packshot.jpg' alt='Track Packshot'/><div class='info'><span class='key'>" . $item['key'] . '</span><!--key-->' . $item['artist'] . " - <a href='/' target='_blank'>" . $item['title'] . "</a> (" . $item['total_score'] . ")</div><!--info--></div><!--item-->\n");
+				$coverstuff = '';
+				if ($item['featured'] && $item['cover']) {
+					$coverstuff = '<img class="packshot" src="' . $item['cover'] . '" alt="' . $item['title'] . '" />';
+				}
+				echo("<div class='item'>" . $coverstuff . "<div class='info'>" . $item['artist'] . " - <a href='#' class=\"trackinfo\" data-track-key=\"" . $item['key'] . "\" target='_blank'>" . $item['title'] . "</a></div><!--info--></div><!--item-->\n");
 			}
 		?>
 
@@ -194,7 +203,12 @@ array_multisort($score, SORT_DESC, $full_feed);
 	<script type="text/javascript">
 		// for later
 		var fullFeed = <?php echo json_encode($full_feed); ?>;
-		console.log(fullFeed);
+		//console.log(fullFeed);
+
+		$('a.trackinfo').on('click', function(e) {
+			e.preventDefault();
+			alert(JSON.stringify(fullFeed[ $( this ).data('track-key') ]));
+		});
 	</script>
 </body> 
 </html>
