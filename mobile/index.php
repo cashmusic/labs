@@ -161,20 +161,20 @@ foreach ($full_feed as $key => $item)
 array_multisort($score, SORT_DESC, $full_feed);
 ?>
 
-
-
-
 <!DOCTYPE html>
 <head> 
 <title>CASH Music</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
 <link rel="icon" type="image/x-icon" href="https://91ee07a61ca29df61569-b2dba7dce06e8a9c0977ad3a8844e9c8.ssl.cf2.rackcdn.com/v3/ui/default/assets/images/favicon.ico" />
 <link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-<link href='https://b6febe3773eb5c5bc449-6d885a724441c07ff9b675222419a9d2.ssl.cf2.rackcdn.com/standard/css/stdrd.css' rel='stylesheet' type='text/css'>
-
+<link href='css/mobile.css' rel='stylesheet' type='text/css'>
 </head> 
 <body>
-	<div id="topspc"></div>
+<header>
+<img src="images/bg.jpg" alt="Background" />
+<h1>Open <span>Mobile Music</span> Discovery</h1>
+</header><!--bg-->
 	<div id="mainspc">
 
 		<?php
@@ -185,7 +185,7 @@ array_multisort($score, SORT_DESC, $full_feed);
 			//	  2. load more info on span click, display data from the fullFeed JS object below
 			//    3. party
 			foreach ($full_feed as $item) {
-				echo($item['key'] . ' - ' . $item['artist'] . ": " . $item['title'] . " (" . $item['total_score'] . ")<br />\n");
+				echo("<div class='item'><img class='packshot' src='images/packshot.jpg' alt='Track Packshot'/><div class='info'><span class='key'>" . $item['key'] . '</span><!--key-->' . $item['artist'] . " - <a href='/' target='_blank'>" . $item['title'] . "</a> (" . $item['total_score'] . ")</div><!--info--></div><!--item-->\n");
 			}
 		?>
 
