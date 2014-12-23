@@ -1,0 +1,79 @@
+/*************************************************** 
+ *
+ *  CASH Music - Embedded Elements Styles - Basic Default
+ *	Created by CASH Music
+ *
+ ***************************************************/
+
+/* General */
+
+#mainspc{
+	background:none;
+	color:#333;
+	width:100%;
+	padding: 0;
+}
+
+
+/* Forms */
+
+input{
+	background-color: rgba(255,255,255,0.4);	
+	color:#222;
+}
+
+::-webkit-input-placeholder{color:#222;}
+placeholder{color:#222;}
+
+input[type=email] {
+	color: #333;
+}
+
+input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, textarea:focus {
+	background-color: rgba(255,255,255,0.85);
+	color: #333;
+}
+
+.cash_input_address {
+	color: #000;
+}
+
+.cash_comments{
+	color:#333;
+}
+
+
+/* Single Purchase */
+
+.cash_singlepurchase_flexible_price .cash_singlepurchase_currency{
+	color:#333;
+}
+
+.cash_timeandplace {
+	color:#333;
+}
+
+
+/* Tour Dates */
+
+.tourdates .cash_event:first-child {
+	border-top: 1px solid #999;	
+}
+
+.tourdates .cash_event:nth-child(even) {
+	background: none;
+	border-bottom: 1px solid #999;
+}
+
+.tourdates .cash_event:nth-child(odd) {
+	background:none;
+	border-bottom: 1px solid #999;	
+}
+
+/* -- Mid Size + Above / Vertical Tablet -- */
+@media screen and (min-width: 535px){
+	#mainspc{
+		padding:0;
+		width:100%;
+	}
+}
